@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.5"
+    }
+}
+
+version = "0.1.SNAPSHOT"
+
+ext {
+    daggerVersion = "2.2"
+    mainClass = "coffee.CoffeeApp"
+}
+
+apply plugin: "java"
+apply plugin: "net.ltgt.apt"
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': mainClass
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+dependencies {
+    compile "javax.inject:javax.inject:1"
+    compile "com.google.dagger:dagger:${project.daggerVersion}"
+    compile "com.google.dagger:dagger-compiler:${project.daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${project.daggerVersion}"
+
+}
+
+mainClassName = mainClass
+// java -jar build/libs/daggertest-all-0.1.SNAPSHOT.jar
+//./gradlew clean fatJar run

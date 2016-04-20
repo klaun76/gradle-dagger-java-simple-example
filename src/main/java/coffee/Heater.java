@@ -1,4 +1,4 @@
-package daggertest;
+package coffee;
 
 interface Heater {
   void on();

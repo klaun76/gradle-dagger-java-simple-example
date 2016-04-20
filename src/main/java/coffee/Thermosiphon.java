@@ -1,4 +1,4 @@
-package daggertest;
+package coffee;
 
 import javax.inject.Inject;
 

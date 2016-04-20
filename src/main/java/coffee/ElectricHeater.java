@@ -1,4 +1,4 @@
-package daggertest;
+package coffee;
 
 class ElectricHeater implements Heater {
   boolean heating;
