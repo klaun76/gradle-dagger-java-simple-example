@@ -4,7 +4,7 @@ This repository was created as an example how to build java project with dagger 
 
 ## Status
 
-For now it only works with 'com.google.dagger:dagger:2.2' i was unable to find out why version 2.3 crashes. As soon as I will solve problem with version 2.3 I will post update.
+Dagger 2.3 version is working. Problem was with dependencies on com.google.guava, and specially order of dependencies. Many thanks to Thomas.
 
 [website]: http://google.github.io/dagger
 
