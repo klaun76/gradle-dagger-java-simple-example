@@ -12,7 +12,8 @@ buildscript {
 version = "0.1.SNAPSHOT"
 
 ext {
-    daggerVersion = "2.2"
+    daggerVersion = "2.3"
+    guavaVersion = "19.0"
     mainClass = "coffee.CoffeeApp"
 }
 
@@ -36,7 +37,7 @@ task fatJar(type: Jar) {
 dependencies {
     compile "javax.inject:javax.inject:1"
     compile "com.google.dagger:dagger:${project.daggerVersion}"
-    compile "com.google.dagger:dagger-compiler:${project.daggerVersion}"
+    apt "com.google.guava:guava:${project.guavaVersion}"
     apt "com.google.dagger:dagger-compiler:${project.daggerVersion}"
 
 }
